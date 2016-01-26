@@ -1,9 +1,15 @@
+# Permito la carpeta node_modules pero ignoro tiene
+!node_modules/
 node_modules/*
+
+# Excepto las carpetas /dao y /rutas
 !node_modules/dao/
 !node_modules/rutas/
-!node_modules/dao/*
-!node_modules/rutas/*
 
+# Ignorar debugs
+npm-debug.log
+
+# Archivos varios OS y Windows
 .DS_Store
 .DS_Store?
 ._*
@@ -12,4 +18,3 @@ node_modules/*
 ehthumbs.db
 Thumbs.db
 
-npm-debug.log

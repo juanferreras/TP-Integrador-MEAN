@@ -1,0 +1,17 @@
+{
+  "name": "tp-integrador",
+  "version": "0.0.1",
+  "scripts": {
+    "db": "mongod --dbpath C:/mongodb/data",
+    "start": "grunt build && node webserver.js"
+  },
+  "author": "Juan Ferreras",
+  "dependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "grunt": "^0.4.5",
+    "grunt-postcss": "^0.5.5",
+    "postcss-discard-comments": "^1.2.0",
+    "grunt-sass": "^1.0.0",
+    "grunt-uncss": "^0.4.3"
+  }
+}

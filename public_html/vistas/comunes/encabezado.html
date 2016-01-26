@@ -1,0 +1,54 @@
+<div class="navbar navbar-inverse" ng-controller="HomeCtrl">
+	<div class="container-fluid">
+		
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/home">TP Integrador</a>
+			
+		</div>
+		<div class="btn-group" uib-dropdown is-open="status.isopen">
+			<button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+				Button dropdown <span class="caret"></span>
+			</button>
+			<ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+				<li role="menuitem"><a href="#">Action</a></li>
+				<li role="menuitem"><a href="#">Another action</a></li>
+				<li role="menuitem"><a href="#">Something else here</a></li>
+				<li class="divider"></li>
+				<li role="menuitem"><a href="#">Separated link</a></li>
+			</ul>
+		</div>
+		<div class="collapse navbar-collapse" id="mynavbar-content"  ng-class="{'in':!navCollapsed}">
+			<ul class="nav navbar-nav">
+				<li class="active"><a ng-href="#/home" >Inicio</a></li>				
+				<li dropdown>
+					<a href="#" dropdown-toggle>Gestion<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a ng-click="verProyectos()">Proyectos</a></li>
+						<li><a ng-click="verClientes()">Cliente</a></li>
+						<li class="divider" role="presentation"></li>
+						<li><a ng-click="verTareas()">Historia de Usuario</a></li>
+					</ul>
+				</li>
+				<li><a ng-href="#/home">Ayuda</a></li>
+				<li><a ng-href="#/home">Salir</a></li>
+			</ul>
+			<form class="navbar-form navbar-right" role="search">
+			  <div class="form-group">
+			    <input type="text" class="form-control" placeholder="Search">
+			  </div>
+			  <button type="submit" class="btn btn-default">Buscar</button>
+			</form>
+		</div>
+			 
+	</div>
+</div>
+<header>
+	<div class="page-header">
+  		<h1>{{titulo}} <small>SCRUM NG</small></h1>
+	</div>
+</header>

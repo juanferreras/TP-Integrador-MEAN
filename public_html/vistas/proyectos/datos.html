@@ -1,0 +1,65 @@
+<div class="row">
+	<div  class="col-xs-12">
+		<h3>Proyectos ({{operacion}})</h3>
+		<form name="frmproyectos"  novalidate="novalidate"  class="form-horizontal">
+			<div class="form-group">
+			    <label for="nombrePry" class="col-sm-2 control-label">Nombre</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="nombrePry" placeholder="Nombre" 
+			      ng-model="proyecto.nombre">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="clientePry" class="col-sm-2 control-label">Cliente</label>
+			    <div class="col-sm-10">
+					<select class="form-control" 
+ 					ng-options="cliente as cliente.nombre for cliente in listaClientes track by cliente._id" ng-model="proyecto.cliente"></select>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="nombrePry" class="col-sm-2 control-label">Fecha Inicio</label>
+			    <div class="col-sm-10">
+			      <input type="date" class="form-control" id="nombrePry" placeholder="dd/mm/aaaa" ng-model="proyecto.fechaInicio">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="presupPry" class="col-sm-2 control-label">Presupuesto</label>
+			    <div class="col-sm-10">
+			      <input type="number" class="form-control" id="presupPry" placeholder="$0.00" 
+			      ng-model="proyecto.presupuesto" pattern="^\d+(\.|\,)\d{2}$">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="duracionPry" class="col-sm-2 control-label">Duracion (Horas)</label>
+			    <div class="col-sm-10">
+			      <input type="number" class="form-control" id="nombrePry" placeholder="Nombre" ng-model="proyecto.duracion">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="button" class="btn btn-default" ng-click="guardar()">Guardar</button>
+					<a class="btn btn-info" ng-href="#/proyectos/lista" role="button">Ver Todos</a>
+			    </div>
+		  	</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div  class="col-xs-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Tareas pendientes</h3>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<li>Mostrar un mensaje  de error si el cliente seleccionado ya está asignado a 2 proyectos</li> 
+					<li>Mostrar mensajes de error de las validaciones no realizadas.</li> 
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+	

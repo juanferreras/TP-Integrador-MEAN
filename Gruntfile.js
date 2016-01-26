@@ -2,13 +2,19 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		watch: {
+			css: {
+				files: ['public_html/lib/scss/**/*.scss'],
+				tasks: ['sass:dev','postcss']
+			}
+		},
 		sass: {
 			build: {
 				options: {
 					outputStyle: 'compressed'
 				},
 				files: {
-					'lib/css/custom.css' : 'lib/scss/custom.scss'
+					'public_html/lib/css/custom.min.css' : 'public_html/lib/scss/custom.scss'
 				}
 			},
 			dev: {
@@ -16,7 +22,7 @@ module.exports = function(grunt) {
 					outputStyle: 'expanded'
 				},
 				files: {
-					'lib/css/custom.css' : 'lib/scss/custom.scss'
+					'public_html/lib/css/custom.min.css' : 'public_html/lib/scss/custom.scss'
 				}
 			}
 		},
@@ -28,12 +34,13 @@ module.exports = function(grunt) {
 				]
 			},
 			dist: {
-				src: 'lib/css/custom.css'
+				src: 'public_html/lib/css/custom.min.css'
 			}
 		}
 	});
 	
 	// Load the plugins.
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-postcss');
 	grunt.loadNpmTasks('grunt-sass');
  

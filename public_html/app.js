@@ -1,4 +1,4 @@
-angular.module('appTP', ['ngRoute','ui.bootstrap'])
+angular.module('appTP', ['ngRoute','ui.bootstrap', 'angular-intro'])
 	.constant('URL_CLIENTES','http://localhost:8080/clientes')
     .constant('URL_PROYECTOS','http://localhost:8080/proyectos')
 	.config(function($routeProvider) {

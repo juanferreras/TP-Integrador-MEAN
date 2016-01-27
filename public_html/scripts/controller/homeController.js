@@ -11,4 +11,7 @@ angular.module('appTP')
 			$scope.verTareas= function(){
 			    $location.path("/tareas/lista");
 			};
+			$scope.verAyuda= function(){
+			    $location.path("/home").search('tutorial');
+			};
 		}]);

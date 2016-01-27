@@ -1,33 +1,204 @@
+/* Estilos dados por la cátedra */
+
 html,
-body{
-  height:100%;
+body {
+  height: 100%;
 }
-.fill{
-    width:100%;
-    height:100%;
-    min-height:100%;
-    padding:10px;
+
+.fill {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 10px;
 }
-form .ng-dirty { 
-  border-color: yellow; 
-  font-weight: bold; 
+
+form .ng-dirty {
+  border-color: yellow;
 }
-form .ng-pristine { 
-  border-color: green; 
-  border-width: 2px; 
+
+form .ng-pristine {
+  border-color: green;
+  border-width: 2px;
 }
-form .ng-invalid{ 
-  background-color: lightpink; 
+
+form .ng-invalid {
+  background-color: lightpink;
 }
-form .ng-valid{ 
-  background-color: lightgreen; 
+
+form .ng-valid {
+  background-color: lightgreen;
 }
-.nav, 
-.pagination, 
-.carousel, 
-.panel-title a { 
-  cursor: pointer; 
+
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
 }
+
 body > .container {
   padding-top: 60px;
+}
+
+/* Globales y Homepage */
+
+input {
+  border: 0;
+  padding: 6px 8px;
+}
+
+small + input{
+  margin-left: 10px;
+}
+
+form .ng-pristine,
+input {
+  background: transparent;
+  border: 2px solid #ccc;
+  color: #333;
+}
+
+input:focus {
+  border-color: #666 !important;
+  outline: none;
+}
+
+form .ng-dirty {
+  background: #eee;
+}
+
+form .ng-invalid {
+  background: #ECDFDF;
+  color: #C24444;
+  border-color: #C88B8B;
+}
+
+form .ng-valid {
+  background: #DFF6DF;
+  color: #6CA36C;
+  border-color: #99CD99;
+}
+
+header.bs-header {
+  margin: 65px auto 60px;
+}
+
+.panel + .icon-wrapper {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: 26px;
+}
+
+.panel + .icon-wrapper > i.glyphicon {
+  color: #fff;
+  z-index: 1;
+  position: absolute;
+  left: -5px;
+  bottom: 30px;
+  font-size: 10em;
+  margin: auto;
+  transition: all 0.4s ease;
+  transform: perspective(1px) scale(0.5);
+}
+
+.panel-primary + .icon-wrapper > i.glyphicon{
+  color: #23313f;
+}
+.panel-danger + .icon-wrapper > i.glyphicon{
+  color: #C03E31;
+}
+.panel-success + .icon-wrapper > i.glyphicon{
+  color: #1AAE91;
+}
+
+.panel > .panel-heading {
+  padding: 25px;
+}
+
+.panel h4 {
+  font-weight: bold;
+  font-size: 23px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-selector{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.home-selector .icon-wrapper{
+  overflow: hidden;
+}
+
+.home-selector:hover i.glyphicon{
+  transform: perspective(1px) scale(1) rotate(15deg);
+}
+
+.jumbotron h3 {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+/* Tutorial */
+
+.introjs-button:focus,
+.introjs-button:hover {
+    color: #fff;
+    background: #2C3E50;
+    border-color: #2c3e50;
+}
+.introjs-prevbutton:focus,
+.introjs-prevbutton:hover {
+    color: #fff;
+    background: #18BC9C;
+    border-color: #18BC9C;
+}
+.introjs-skipbutton:focus,
+.introjs-skipbutton:hover{
+    background: #E74C3C;
+    border-color: #E74C3C;
+}
+
+.introjs-button{
+    box-shadow: 0 0 0;
+    text-shadow: 0 0 0;
+    border: 0;
+    background: #fff;
+    outline: 0;
+    text-decoration: none !important;
+    font-family: "Lato";
+    font-size: 12px;
+    color: #333;
+    font-weight: normal;
+    padding: 8px 12px;
+    border: 2px solid #eee;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Clientes */
+
+table.table tr th:last-child {
+  text-align: right;
+}
+
+.table>thead>tr>th, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>td, 
+.table>tfoot>tr>td {
+  padding-top: 15px;
+}
+table.table tr td:last-child {
+  text-align: right;
+  padding-top: 8px;
+}
+
+.margin-top-10{
+  margin-top: 10px;
 }

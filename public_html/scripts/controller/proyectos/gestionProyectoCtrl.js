@@ -21,7 +21,8 @@ angular.module('appTP')
 			$scope.guardar = function(){
 				console.log($scope.proyecto);
 				if($scope.proyecto._id) pryService.actualizar($scope.proyecto);
-				else  pryService.guardar($scope.proyecto);
+				else pryService.guardar($scope.proyecto);
+				$location.path("/proyectos/lista");
 			}
 			$scope.buscarCliente = function(){				
 				pryService.buscar($scope.proyecto._id)

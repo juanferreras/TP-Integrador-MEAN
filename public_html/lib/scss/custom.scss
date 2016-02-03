@@ -22,7 +22,7 @@ form .ng-pristine {
 }
 
 form .ng-invalid {
-  background-color: lightpink;
+  background-colro: lightpink;
 }
 
 form .ng-valid {
@@ -47,8 +47,14 @@ input {
   padding: 6px 8px;
 }
 
-small + input{
-  margin-left: 10px;
+small+input {
+  margin-top: 10px;
+  width: 100%;
+}
+
+small{
+  margin-top: 15px;
+  display: inline-block;
 }
 
 form .ng-pristine,

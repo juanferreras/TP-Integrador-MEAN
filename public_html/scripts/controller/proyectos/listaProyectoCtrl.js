@@ -2,6 +2,9 @@ angular.module('appTP')
 .controller('ListaProyectosCtrl',
 	['$scope','$location','proyectoService',
 		function($scope,  $location,pryService) {
+
+			$scope.cantFilas = 5;
+
 			$scope.refrescar = function(){ 
 				pryService.listar().then(
 					function() {

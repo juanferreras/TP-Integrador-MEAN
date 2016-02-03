@@ -8,25 +8,26 @@
 	</div>
 </div>
 <div class="row">
-	<div  class="col-xs-12">
-		<span>
-			<small>Filtrar datos </small>
-			<input type="text" ng-model="datoFiltro" />
-		</span>
+	<div  class="col-xs-12 col-sm-6 col-md-3">
+			<small>Filtrar datos  </small>
+			<input type="text" ng-model="datoFiltro" placeholder="Buscar" />
+	</div>
+	<div  class="col-xs-12 col-sm-6 col-md-3">
+			<small>Cantidad Filas </small>
+			<input type="number" ng-model="cantFilas" min=1 step=1 placeholder="Cantidad Filas" />
 	</div>
 </div>
 <div class="row">
-	<div  class="col-xs-8">
+	<div  class="col-xs-10">
 		<h2>Lista de Proyectos
 		</h2>
 	</div>
 	<div class="col-xs-2">
-		<button class="btn btn-danger btn-sm pull-right" ng-click="nuevo()">Nuevo</button>
+		<button class="btn btn-primary pull-right margin-top-10" ng-click="nuevo()">Nuevo</button>
 	</div>
-	<div  class="col-xs-2"></div>
 </div>
 <div class="row">
-	<div  class="col-xs-10">
+	<div  class="col-xs-12">
 		<table class="table table-hover">
 			<thead> 
 				<tr> 
@@ -34,15 +35,21 @@
 					<th>#</th> 
 					<th>Nombre</th> 
 					<th>Cliente</th>
+					<th class="hidden-xs hidden-sm">Fecha Inicio</th>
+					<th class="hidden-xs hidden-sm">Presupuesto</th>
+					<th class="hidden-xs hidden-sm">Duracion (hs)</th>
 					<th>Acciones</th> 
 				</tr> 
 			</thead>
 			<tbody>
-				<tr ng-repeat="pry in listaProyectos"> 
+				<tr ng-repeat="pry in listaProyectos | filter: datoFiltro | limitTo: cantFilas "> 
 					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(cliente)" /></td>
 					<td> {{pry._id}} </td>
 					<td>-{{pry.nombre}} </td>
 					<td>-{{pry.cliente.nombre}} </td>
+					<td class="hidden-xs hidden-sm"> {{ pry.fechaInicio | date:'dd/MM/yyyy' }}</td>
+					<td class="hidden-xs hidden-sm"> {{ pry.presupuesto | currency }}</td>
+					<td class="hidden-xs hidden-sm"> {{ pry.duracion }}</td>
 					<td>
 						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(pry)">
   							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>

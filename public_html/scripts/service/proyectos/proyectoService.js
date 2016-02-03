@@ -8,10 +8,11 @@ angular.module('appTP').factory('proyectoService',
 				console.log(objeto);
 				$http.post(baseUrl,objeto).
 				  success(function(data, status, headers, config) {
+				  	console.log("lo agrega");
 						_lista.push(objeto);
 				  }).
 				  error(function(data, status, headers, config) {
-					  console.log(data);					  
+					  console.log("error", data);					  
 				  });			
 			};
 			var _actualizar= function(objeto){
@@ -26,7 +27,7 @@ angular.module('appTP').factory('proyectoService',
 				  });			
 			};
 			var _borrar= function(objeto){
-				$http.delete(baseUrl,objeto).
+				$http.delete(baseUrl+"/"+objeto._id).
 				  success(function(data, status, headers, config) {
 					  console.log(data);
 					  // actualizo la lista

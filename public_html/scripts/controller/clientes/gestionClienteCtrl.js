@@ -1,7 +1,7 @@
 angular.module('appTP')
 .controller('GestionClientesCtrl',
 		['$scope','$location','clienteService','$routeParams',
-		 function($scope,  $location,clientesDAO,$routeParams) {
+		 function($scope,  $location,clienteService,$routeParams) {
 			//funcion inicializadora
 			$scope.init = function(){
 				$scope.edicionHabilitada = true;
@@ -9,10 +9,10 @@ angular.module('appTP')
 						$scope.operacion = "Nuevo Cliente";
 						console.log($routeParams.id+ " nuevo");
 					}else{
-						clientesDAO.buscar($routeParams.id)
+						clienteService.buscar($routeParams.id)
 						.then(
 							function() {
-								$scope.cliente = clientesDAO.get();
+								$scope.cliente = clienteService.get();
 							}
 						);
 						$scope.operacion = "Editar Cliente";
@@ -21,13 +21,15 @@ angular.module('appTP')
 			$scope.guardar = function(){
 				console.log("guarda");
 				console.log($scope.cliente);
-				clientesDAO.guardar($scope.cliente);
+				clienteService.guardar($scope.cliente);
+				$location.path("/clientes/lista");
 				$scope.edicionHabilitada = false;	
 			};
 			$scope.actualizar = function(){
 				console.log("actualiza");
 				console.log($scope.cliente);
-				clientesDAO.actualizar($scope.cliente);		
+				clienteService.actualizar($scope.cliente);
+				$location.path("/clientes/lista");
 				$scope.edicionHabilitada = false;	
 			}
 			$scope.init();

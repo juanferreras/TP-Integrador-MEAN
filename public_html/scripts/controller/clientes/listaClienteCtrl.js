@@ -2,6 +2,9 @@ angular.module('appTP')
 .controller('ListaClientesCtrl',
 	['$scope','$location','clienteService',
 		 function($scope,  $location,clienteService) {
+
+		 	$scope.cantFilas = 5;
+
 			$scope.refrescar = function(){ 
 				clienteService.listar().then(
 					function() {

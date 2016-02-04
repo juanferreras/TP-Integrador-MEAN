@@ -1,10 +1,11 @@
 angular.module('appTP')
 .controller('HomeCtrl',
-		['$scope','$location','$routeParams','clienteService','proyectoService',
-		 function($scope, $location, $routeParams, clienteService, proyectoService) {
+		['$scope','$location','$routeParams','clienteService','proyectoService','tareaService',
+		 function($scope, $location, $routeParams, clienteService, proyectoService, tareaService) {
 
 		 	$scope.cantidadClientes = "Cargando...";
 		 	$scope.cantidadProyectos = "Cargando...";
+		 	$scope.cantidadTareas = "Cargando...";
 
 		 	clienteService.listar().then(
 				function() {
@@ -14,6 +15,11 @@ angular.module('appTP')
 			proyectoService.listar().then(
 				function() {
 					$scope.cantidadProyectos = proyectoService.getLista().length;
+				}
+			);
+			tareaService.listar().then(
+				function() {
+					$scope.cantidadTareas = tareaService.getLista().length;
 				}
 			);
 

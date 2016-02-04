@@ -1,19 +1,16 @@
 <header class="navbar navbar-default navbar-fixed-top navbar-inner"  ng-controller="HomeCtrl">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isCollapsed = !isCollapsed">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" ng-click="isCollapsed = !isCollapsed">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand visible-xs" href="#/home">UI Bootstrap</a>
+            <a class="navbar-brand" ng-href="#/home" role="button">TP Integrador</a>
         </div>
-        <nav class="hidden-xs">
+        <div id="navbar" ng-class="{'in': isCollapsed }" class="navbar-collapse collapse" aria-expanded="{{ isCollapsed }}">
             <ul class="nav navbar-nav">
-                <a ng-href="#/home" role="button" class="navbar-brand">
-                    TP INTEGRADOR
-                </a>
                 <li class="dropdown" uib-dropdown="" style="">
                     <a role="button" class="dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
                         Acciones <b class="caret"></b>
@@ -26,7 +23,7 @@
                 </li>
                 <li><a ng-click="verAyuda()">Ayuda</a></li>                
             </ul>
-        </nav>      
+        </div>      
     </div>
 </header>
 <div class="header-placeholder"></div>

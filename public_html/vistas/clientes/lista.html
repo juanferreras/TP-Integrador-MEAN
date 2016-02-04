@@ -31,8 +31,8 @@
 			<table class="table table-hover">
 			<thead> 
 			<tr> 
-				<th>Seleccionar</th> 
-				<th>#</th> 
+				<th></th> 
+				<th>Id</th> 
 				<th>Nombre</th> 
 				<th>Correo</th>
 				<th>Acciones</th> 
@@ -41,14 +41,14 @@
 			<tbody>
 			<tr ng-repeat="cliente in listaClientes | filter: datoFiltro | limitTo: cantFilas "> 
 				<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(cliente)" /></td>
-				<td> {{cliente._id}} </td>
-				<td>-{{cliente.nombre}} </td>
-				<td>-{{cliente.correo}} </td>
+				<td>{{cliente._id | acortar:5 }} </td>
+				<td>{{cliente.nombre}} </td>
+				<td>{{cliente.correo}} </td>
 				<td>
 					<button type="button" class="btn btn-sm btn-default" aria-label="Editar" ng-click="editar(cliente)">
   						<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
 					</button>
-					<button type="button" class="btn btn-sm btn-default" aria-label="Borrar" ng-click="borrar(cliente)">
+					<button type="button" class="btn btn-sm btn-danger" aria-label="Borrar" ng-click="borrar(cliente)">
   						<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</button>
 				</td>

@@ -1,23 +1,68 @@
-<div class="container fill">
-	<div class="row">
-		<div  class="col-xs-12">
-			<h2>Historia de usuario ({{operacion}})</h2>
-			<form name="frmproyectos"  novalidate="novalidate" class="form">
-				<h1>CREAR FORMULARIO PARA DAR DE ALTA / EDICION  de UNa  Historia de usuario</h1>
-				<ul>
-					<li>Nombre de la historia de usuario</li>
-					<li>Descripcion (textare)</li>
-					<li>Prioridad (combo: alta/media/baja)</li>
-					<li>Puntos de Historia de usuario (numerico que toma valores entre 3 y 18 de 3 en 3)</li>		
-					<li>Estado (radio buotton : Planificada - En Curso - Finalizada)</li>
-					<li>Paso test (checkbox si/no): que indica si la tarea ya fue testeada</li>	
-				</ul>
-			</form>
-		</div>
+<div class="row">
+	<div  class="col-xs-12">
+		<h3>Historia de usuario ({{operacion}})</h3>
+		<form name="frmtareas"  novalidate="novalidate"  class="form-horizontal">
+			<div class="form-group">
+			    <label for="nombreTar" class="col-sm-2 control-label">Nombre</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="nombreTar" placeholder="Nombre" 
+			      ng-model="tarea.nombre">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="descTar" class="col-sm-2 control-label">Descripcion</label>
+			    <div class="col-sm-10">
+			    	<textarea class="form-control" id="descTar" placeholder="Descripción" 
+			      ng-model="tarea.descripcion"></textarea>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="proyectoTar" class="col-sm-2 control-label">Proyecto</label>
+			    <div class="col-sm-10">
+					<select class="form-control" ng-options="proyecto as proyecto.nombre for proyecto in listaProyectos track by proyecto._id" ng-model="tarea.proyecto"></select>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="prioridadTar" class="col-sm-2 control-label">Prioridad</label>
+			    <div class="col-sm-10">
+					<select class="form-control" ng-model="tarea.prioridad">
+						<option value="alta">Alta</option>
+						<option value="media">Media</option>
+						<option value="baja">Baja</option>
+					</select>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="puntosTar" class="col-sm-2 control-label">Puntos de usuario</label>
+			    <div class="col-sm-10">
+			      <input type="number" class="form-control" id="puntosTar" placeholder="Puntos de Usuario" 
+			      ng-model="tarea.puntos" min="3" max="18" step="3">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="estadoTar" class="col-sm-2 control-label">Estado</label>
+			    <div class="col-sm-10 padding-top-12">
+			    <input type="radio" name="estadoTar" id="estado1" ng-model="tarea.estado" value="planificada"/>
+			    <label for="estado1"> Planificada</label>
+					<input type="radio" name="estadoTar" id="estado2" ng-model="tarea.estado" value="enCurso"/>
+					<label for="estado2"> En curso</label>
+					<input type="radio" name="estadoTar" id="estado3" ng-model="tarea.estado" value="finalizada"/>
+					<label for="estado3"> Finalizada</label>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="test" class="col-sm-2 control-label">¿Pasó test?</label>
+			    <div class="col-sm-10 padding-top-12">
+			    <input type="checkbox" name="test" id="test" ng-model="tarea.test" value="1"/>
+			    <label for="test"> Si</label>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="button" class="btn btn-default" ng-click="guardar()">Guardar</button>
+					<a class="btn btn-info" ng-href="#/tareas/lista" role="button">Ver Todos</a>
+			    </div>
+		  	</div>
+		</form>
 	</div>
-	<div class="row">
-		<div  class="col-xs-12">
-			<a ng-href="#/lista" > Ver Todos</a>
-		</div>
-	</div>		
-</div>	
+</div>

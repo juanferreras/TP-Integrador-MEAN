@@ -4,37 +4,32 @@ angular.module('appTP').factory('proyectoService',
 			var _lista=[];
 			var _elementoEncontrado;
 			var _agregar = function(objeto){
-				console.log('servicio agregar');
-				console.log(objeto);
 				$http.post(baseUrl,objeto).
 				  success(function(data, status, headers, config) {
-				  	console.log("lo agrega");
 						_lista.push(objeto);
 				  }).
 				  error(function(data, status, headers, config) {
-					  console.log("error", data);					  
+					  console.log("Error", status, data);		  
 				  });			
 			};
 			var _actualizar= function(objeto){
 				$http.put(baseUrl,objeto).
 				  success(function(data, status, headers, config) {
-					  console.log(data);
 					  // actualizo la lista
 					  _listar();
 				  }).
 				  error(function(data, status, headers, config) {
-					  console.log(data);
+					  console.log("Error", status, data);
 				  });			
 			};
 			var _borrar= function(objeto){
 				$http.delete(baseUrl+"/"+objeto._id).
 				  success(function(data, status, headers, config) {
-					  console.log(data);
 					  // actualizo la lista
 					  _listar();
 				  }).
 				  error(function(data, status, headers, config) {
-					  console.log(data);
+					  console.log("Error", status, data);
 				  });			
 			};
 			var _buscar= function(objeto) {
@@ -44,8 +39,7 @@ angular.module('appTP').factory('proyectoService',
 						_elementoEncontrado = data;
 						deffered.resolve();
 				}).error(function(data, status, headers, config) {
-					  console.log(data);
-					  console.log(status);
+					  console.log("Error", status, data);
 				  });
 				return deffered.promise;
 			};
@@ -54,10 +48,9 @@ angular.module('appTP').factory('proyectoService',
 				$http.get(baseUrl).success(
 					function(data, status, headers, config) {
 						_lista = data;
-						console.log(data);
 						deffered.resolve(data);
 				}).error(function(data, status, headers, config) {
-					  console.log(data);
+					  console.log("Error", status, data);
 				  });
 				return deffered.promise;
 			};

@@ -1,6 +1,7 @@
-angular.module('appTP', ['ngRoute','ui.bootstrap', 'angular-intro'])
+angular.module('appTP', ['ngRoute','ui.bootstrap', 'angular-intro', 'hSweetAlert'])
 	.constant('URL_CLIENTES','http://localhost:8080/clientes')
-    .constant('URL_PROYECTOS','http://localhost:8080/proyectos')
+  .constant('URL_PROYECTOS','http://localhost:8080/proyectos')
+  .constant('URL_TAREAS','http://localhost:8080/tareas')
 	.config(function($routeProvider) {
 		$routeProvider.when('/home', {
 			controller : 'HomeCtrl',
@@ -25,7 +26,7 @@ angular.module('appTP', ['ngRoute','ui.bootstrap', 'angular-intro'])
 			templateUrl : 'vistas/proyectos/datos.html'
 		}).when('/tareas/lista', {
 			controller : 'ListaTareasCtrl',
-			templateUrl : 'vistas/tareas/datos.html'
+			templateUrl : 'vistas/tareas/lista.html'
 		}).when('/tareas/add', {
 			controller : 'GestionTareasCtrl',
 			templateUrl : 'vistas/tareas/datos.html'

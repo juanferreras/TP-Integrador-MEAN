@@ -70,11 +70,11 @@ input:focus {
 }
 
 form .ng-dirty {
-  background: #eee;
+  background: #fff;
 }
 
 form .ng-invalid {
-  background: #ECDFDF;
+  background: #fff;
   color: #C24444;
   border-color: #C88B8B;
 }
@@ -186,7 +186,15 @@ header.bs-header {
     transition: all 0.3s ease;
 }
 
-/* Clientes */
+/* Listas */
+
+h3{
+  font-weight: bold;
+}
+
+h3 > .operacion{
+  font-weight: normal;
+}
 
 table.table tr th:last-child {
   text-align: right;
@@ -205,6 +213,12 @@ table.table tr td:last-child {
   padding-top: 8px;
 }
 
+/* Helpers */
+
 .margin-top-10{
   margin-top: 10px;
+}
+
+.padding-top-12{
+  padding-top: 12px;
 }

@@ -31,8 +31,8 @@
 		<table class="table table-hover">
 			<thead> 
 				<tr> 
-					<th>Seleccionar</th> 
-					<th>#</th> 
+					<th></th> 
+					<th>Id</th> 
 					<th>Nombre</th> 
 					<th>Cliente</th>
 					<th class="hidden-xs hidden-sm">Fecha Inicio</th>
@@ -45,8 +45,8 @@
 				<tr ng-repeat="pry in listaProyectos | filter: datoFiltro | limitTo: cantFilas "> 
 					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(cliente)" /></td>
 					<td> {{pry._id}} </td>
-					<td>-{{pry.nombre}} </td>
-					<td>-{{pry.cliente.nombre}} </td>
+					<td> {{pry.nombre}} </td>
+					<td> {{pry.cliente.nombre}} </td>
 					<td class="hidden-xs hidden-sm"> {{ pry.fechaInicio | date:'dd/MM/yyyy' }}</td>
 					<td class="hidden-xs hidden-sm"> {{ pry.presupuesto | currency }}</td>
 					<td class="hidden-xs hidden-sm"> {{ pry.duracion }}</td>
@@ -54,7 +54,7 @@
 						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(pry)">
   							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn btn-default" aria-label="Borrar" ng-click="borrar(pry)">
+						<button type="button" class="btn btn-danger" aria-label="Borrar" ng-click="borrar(pry)">
 	  						<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 						</button>
 					</td>

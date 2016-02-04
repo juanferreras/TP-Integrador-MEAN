@@ -1,13 +1,12 @@
 angular.module('appTP')
 .controller('GestionClientesCtrl',
-		['$scope','$location','clienteService','$routeParams',
-		 function($scope,  $location,clienteService,$routeParams) {
+		['$scope','$location','clienteService','$routeParams', 'sweet',
+		 function($scope,  $location, clienteService, $routeParams, sweet) {
 			//funcion inicializadora
 			$scope.init = function(){
 				$scope.edicionHabilitada = true;
 					if($routeParams.id==='add'){
 						$scope.operacion = "Nuevo Cliente";
-						console.log($routeParams.id+ " nuevo");
 					}else{
 						clienteService.buscar($routeParams.id)
 						.then(
@@ -19,17 +18,33 @@ angular.module('appTP')
 					};
 			};
 			$scope.guardar = function(){
-				console.log("guarda");
-				console.log($scope.cliente);
 				clienteService.guardar($scope.cliente);
-				$location.path("/clientes/lista");
+
+				sweet.show({
+            title: '¡Perfecto!',
+            text: 'Su cliente ha sido cargado con éxito.',
+            type: 'success',
+            confirmButtonText: 'Volver'
+        }, function() {
+						$location.path("/clientes/lista");
+						if(!$scope.$$phase) $scope.$apply()
+        });
+
 				$scope.edicionHabilitada = false;	
 			};
 			$scope.actualizar = function(){
-				console.log("actualiza");
-				console.log($scope.cliente);
 				clienteService.actualizar($scope.cliente);
-				$location.path("/clientes/lista");
+
+				sweet.show({
+            title: '¡Perfecto!',
+            text: 'Su cliente ha sido actualizado con éxito.',
+            type: 'success',
+            confirmButtonText: 'Volver'
+        }, function() {
+						$location.path("/clientes/lista");
+						if(!$scope.$$phase) $scope.$apply()
+        });
+
 				$scope.edicionHabilitada = false;	
 			}
 			$scope.init();

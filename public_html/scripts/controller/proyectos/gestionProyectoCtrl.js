@@ -19,7 +19,6 @@ angular.module('appTP')
 			};
 			$scope.init();
 			$scope.guardar = function(){
-				console.log($scope.proyecto);
 				if($scope.proyecto._id) pryService.actualizar($scope.proyecto);
 				else pryService.guardar($scope.proyecto);
 				$location.path("/proyectos/lista");
@@ -28,9 +27,7 @@ angular.module('appTP')
 				pryService.buscar($scope.proyecto._id)
 				.then(
 						function() {
-							console.log($scope.listaClientes);
 							$scope.proyecto = pryService.get();
-							console.log($scope.proyecto.cliente);
 							$scope.proyecto.fechaInicio = new Date($scope.proyecto.fechaInicio);
 						}
 					);

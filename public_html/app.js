@@ -1,7 +1,7 @@
 angular.module('appTP', ['ngRoute','ui.bootstrap', 'angular-intro', 'hSweetAlert'])
-	.constant('URL_CLIENTES','http://localhost:8080/clientes')
-  .constant('URL_PROYECTOS','http://localhost:8080/proyectos')
-  .constant('URL_TAREAS','http://localhost:8080/tareas')
+	.constant('URL_CLIENTES','/clientes')
+  .constant('URL_PROYECTOS','/proyectos')
+  .constant('URL_TAREAS','/tareas')
 	.config(function($routeProvider) {
 		$routeProvider.when('/home', {
 			controller : 'HomeCtrl',

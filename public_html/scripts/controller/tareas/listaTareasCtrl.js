@@ -25,7 +25,6 @@ angular.module('appTP')
 
       $scope.ver = function(tarea){
         $scope.tareaseleccionada = tarea;
-        console.log($scope.tareaseleccionada);
       };
       $scope.cerrar = function(){
         $scope.tareaseleccionada = null;

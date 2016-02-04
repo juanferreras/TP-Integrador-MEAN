@@ -7,15 +7,20 @@
 		</ol>
 	</div>
 </div>
-
-<div class="row">
-	<div  class="col-xs-12 col-sm-6 col-md-3">
+<div class="row filters">
+	<div class="col-xs-12 col-sm-4 col-md-3">
 			<small>Filtrar datos  </small>
 			<input type="text" ng-model="datoFiltro" placeholder="Buscar" />
 	</div>
-	<div  class="col-xs-12 col-sm-6 col-md-3">
+	<div  class="col-xs-12 col-sm-4 col-md-3">
 			<small>Cantidad Filas </small>
 			<input type="number" ng-model="cantFilas" min=1 step=1 placeholder="Cantidad Filas" />
+	</div>
+	<div  class="col-xs-12 col-sm-4 col-md-3">
+			<small>Proyecto </small>
+			<select class="form-control" ng-options="proyecto as proyecto.nombre for proyecto in listaProyectos track by proyecto._id" ng-model="filtrarProyecto">
+				<option value="">Todos</option>
+			</select>
 	</div>
 </div>
 <div class="row">
@@ -35,29 +40,38 @@
 					<th></th> 
 					<th>Id</th> 
 					<th>Nombre</th> 
-					<th>Proyecto</th>
+					<th class="hidden-xs hidden-sm">Proyecto</th>
 					<th class="hidden-xs hidden-sm">Prioridad</th>
 					<th>SP</th>
-					<th class="hidden-xs hidden-sm">Estado</th>
+					<th>Estado</th>
 					<th class="hidden-xs hidden-sm">Test</th>
 					<th>Acciones</th> 
 				</tr> 
 			</thead>
 			<tbody>
-				<tr ng-repeat="tar in listaTareas | filter: datoFiltro | limitTo: cantFilas "> 
-					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(cliente)" /></td>
-					<td> {{tar._id}} </td> 
+				<tr ng-repeat="tar in listaTareas | filter: datoFiltro | filter: {proyecto: filtrarProyecto} | limitTo: cantFilas "> 
+					<td align="center"><input type="radio" name="tarSelect" ng-click="elegir(tarea)" /></td>
+					<td> {{tar._id | acortar:5}} </td> 
 					<td> {{tar.nombre}} </td>
-					<td> {{tar.proyecto.nombre}} </td>
+					<td class="hidden-xs hidden-sm"> {{tar.proyecto.nombre}} </td>
 					<td class="hidden-xs hidden-sm"> {{tar.prioridad }} </td>
 					<td> {{tar.puntos }} </td>
-					<td class="hidden-xs hidden-sm"> {{tar.estado }} </td>
+					<td> 
+						<select class="form-control" name="estado" required ng-change="guardar(tar)" ng-model="tar.estado">
+							<option value="planificada" ng-selected="tar.estado == 'planificada'">Planificada</option>
+							<option value="enCurso" ng-selected="tar.estado == 'enCurso'">En curso</option>
+							<option value="finalizada" ng-selected="tar.estado == 'finalizada'">Finalizada</option>
+						</select> 
+					</td>
 					<td class="hidden-xs hidden-sm"> {{tar.test }} </td>
 					<td>
-						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(tar)">
+						<button type="button" class="btn btn-sm btn-success" aria-label="Editar" ng-click="ver(tar)">
+  							Ver
+						</button>
+						<button type="button" class="btn btn-sm btn-default" aria-label="Editar" ng-click="editar(tar)">
   							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn btn-danger" aria-label="Borrar" ng-click="borrar(tar)">
+						<button type="button" class="btn btn-sm btn-danger" aria-label="Borrar" ng-click="borrar(tar)">
 	  						<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
 						</button>
 					</td>
@@ -66,3 +80,5 @@
 		</table>
 	</div>
 </div>
+
+<datotarea></datotarea>

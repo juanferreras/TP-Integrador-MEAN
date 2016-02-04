@@ -1,53 +1,54 @@
 <div class="row">
-	<div  class="col-xs-12">
-		<h3>Historia de usuario ({{operacion}})</h3>
+	<div class="col-xs-12 col-md-8 col-md-offset-2">
+		<h3>Historias de usuario <span class="operacion">({{operacion}})</span></h3>
 		<form name="frmtareas"  novalidate="novalidate"  class="form-horizontal">
 			<div class="form-group">
 			    <label for="nombreTar" class="col-sm-2 control-label">Nombre</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="nombreTar" placeholder="Nombre" 
-			      ng-model="tarea.nombre">
+			      <input type="text" name="nombre" class="form-control" id="nombreTar" placeholder="Nombre" ng-model="tarea.nombre" pattern=".{10,100}" required />
+			      <span ng-show="frmtareas.nombre.$invalid && frmtareas.nombre.$dirty" class="error">El nombre debe tener entre 10 y 100 caracteres.</span>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="descTar" class="col-sm-2 control-label">Descripcion</label>
 			    <div class="col-sm-10">
-			    	<textarea class="form-control" id="descTar" placeholder="Descripción" 
-			      ng-model="tarea.descripcion"></textarea>
+			    	<textarea class="form-control" id="descTar" placeholder="Descripción" ng-model="tarea.descripcion"></textarea>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="proyectoTar" class="col-sm-2 control-label">Proyecto</label>
 			    <div class="col-sm-10">
-					<select class="form-control" ng-options="proyecto as proyecto.nombre for proyecto in listaProyectos track by proyecto._id" ng-model="tarea.proyecto"></select>
+						<select class="form-control" name="proyecto" required ng-options="proyecto as proyecto.nombre for proyecto in listaProyectos track by proyecto._id" ng-model="tarea.proyecto"></select>
+						<span ng-show="frmtareas.proyecto.$invalid && frmtareas.proyecto.$dirty" class="error">Debe elegir un proyecto.</span>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="prioridadTar" class="col-sm-2 control-label">Prioridad</label>
 			    <div class="col-sm-10">
-					<select class="form-control" ng-model="tarea.prioridad">
+					<select class="form-control" name="prioridad" required ng-model="tarea.prioridad">
 						<option value="alta">Alta</option>
 						<option value="media">Media</option>
 						<option value="baja">Baja</option>
 					</select>
+					<span ng-show="frmtareas.prioridad.$invalid && frmtareas.prioridad.$dirty" class="error">Debe elegir la prioridad correspondiente.</span>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="puntosTar" class="col-sm-2 control-label">Puntos de usuario</label>
 			    <div class="col-sm-10">
-			      <input type="number" class="form-control" id="puntosTar" placeholder="Puntos de Usuario" 
-			      ng-model="tarea.puntos" min="3" max="18" step="3">
+			      <input type="number" name="puntos" class="form-control" id="puntosTar" placeholder="Puntos de Usuario" required ng-model="tarea.puntos" min="3" max="18" step="3">
+			      <span ng-show="frmtareas.puntos.$invalid && frmtareas.puntos.$dirty" class="error">Ingrese los puntos de usuario.</span>
 			    </div>
 			</div>
 			<div class="form-group">
 			    <label for="estadoTar" class="col-sm-2 control-label">Estado</label>
 			    <div class="col-sm-10 padding-top-12">
-			    <input type="radio" name="estadoTar" id="estado1" ng-model="tarea.estado" value="planificada"/>
-			    <label for="estado1"> Planificada</label>
-					<input type="radio" name="estadoTar" id="estado2" ng-model="tarea.estado" value="enCurso"/>
-					<label for="estado2"> En curso</label>
-					<input type="radio" name="estadoTar" id="estado3" ng-model="tarea.estado" value="finalizada"/>
-					<label for="estado3"> Finalizada</label>
+				    <input type="radio" name="estadoTar" id="estado1" ng-model="tarea.estado" value="planificada" selected required/>
+				    <label for="estado1"> Planificada</label>
+						<input type="radio" name="estadoTar" id="estado2" ng-model="tarea.estado" value="enCurso" required/>
+						<label for="estado2"> En curso</label>
+						<input type="radio" name="estadoTar" id="estado3" ng-model="tarea.estado" value="finalizada" required/>
+						<label for="estado3"> Finalizada</label>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -59,8 +60,9 @@
 			</div>
 			<div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="button" class="btn btn-default" ng-click="guardar()">Guardar</button>
-					<a class="btn btn-info" ng-href="#/tareas/lista" role="button">Ver Todos</a>
+		      <button type="button" class="btn btn-primary" ng-click="guardar()">Guardar</button>
+		      <button type="button" class="btn btn-danger" ng-click="cancelar()">Cancelar</button>		
+					<a class="btn btn-success" ng-href="#/tareas/lista" role="button">Ver Todos</a>
 			    </div>
 		  	</div>
 		</form>

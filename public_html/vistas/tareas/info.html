@@ -1,0 +1,32 @@
+<div tareaseleccionada="tareaseleccionada" cerrar="cerrar()" class="modal fade" ng-class="{'in showing': tareaseleccionada!=null }" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" ng-click="cerrar()" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{ tareaseleccionada.nombre }}</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>Descripción: </strong> {{ tareaseleccionada.descripcion }}</p>
+        <div class="details project-details">
+          <h4>Proyecto</h4>
+          <ul>
+            <li><strong>Nombre:</strong> {{ tareaseleccionada.proyecto.nombre }} </li>
+            <li><strong>Fecha Inicio:</strong> {{ tareaseleccionada.proyecto.fechaInicio | date:'dd/MM/yyyy' }}</li>
+            <li><strong>Presupuesto:</strong> {{ tareaseleccionada.proyecto.presupuesto | currency }}</li>
+            <li><strong>Duración (hs):</strong> {{ tareaseleccionada.proyecto.duracion }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <h4>Cliente</h4>
+          <ul>
+            <li><strong>Nombre:</strong> {{ tareaseleccionada.proyecto.cliente.nombre }}</li>
+            <li><strong>Email:</strong> {{ tareaseleccionada.proyecto.cliente.correo }}</li>
+          </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

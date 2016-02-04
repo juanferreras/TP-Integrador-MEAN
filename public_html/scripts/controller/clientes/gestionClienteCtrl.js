@@ -47,5 +47,10 @@ angular.module('appTP')
 
 				$scope.edicionHabilitada = false;	
 			}
+
+      $scope.cancelar = function(){
+        $location.path("/clientes/lista");
+      }
+
 			$scope.init();
 		}]);

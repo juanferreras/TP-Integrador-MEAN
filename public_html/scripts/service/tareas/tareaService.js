@@ -13,14 +13,18 @@ angular.module('appTP').factory('tareaService',
           });     
       };
       var _actualizar= function(objeto){
+        var deffered = $q.defer();
         $http.put(baseUrl,objeto).
           success(function(data, status, headers, config) {
             // actualizo la lista
             _listar();
+            deffered.resolve();
           }).
           error(function(data, status, headers, config) {
             console.log("Error", status, data);
+            deffered.reject();
           });     
+          return deffered.promise;
       };
       var _borrar= function(objeto){
         $http.delete(baseUrl+"/"+objeto._id).

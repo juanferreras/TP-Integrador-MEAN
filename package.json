@@ -9,7 +9,8 @@
   "scripts": {
     "db": "mongod --dbpath C:/mongodb/data",
     "watch": "grunt build && grunt watch",
-    "build": "grunt build && node webserver.js"
+    "build": "grunt build",
+    "start": "node webserver.js"
   },
   "author": "Juan Ferreras",
   "dependencies": {
